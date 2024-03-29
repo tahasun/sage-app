@@ -1,0 +1,12 @@
+{
+    "name": "sage-app",
+    "private": false,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "yarn client dev"
+    },
+    "devDependencies": {
+      "typescript": "^5.0.2"
+    }
+  }
