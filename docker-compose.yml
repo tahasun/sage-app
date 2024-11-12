@@ -1,0 +1,36 @@
+version: "1.0"
+services:
+  sage-api:
+    image: sage-api
+    build:
+      context: ./packages/sage-api
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=${secrets.SAGE_DB_URI}
+    depends_on:
+      - mongodb
+
+  client:
+    image: sage-client
+    build:
+      context: ./packages/client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://sage-api:5000 # production url for server
+    depends_on:
+      - sage-api
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:

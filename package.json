@@ -3,8 +3,11 @@
     "private": false,
     "version": "1.0.0",
     "type": "module",
+    "author": "Tahasun Tarannum",
+    "license": "MIT",
     "scripts": {
-      "dev": "yarn client dev"
+      "dev": "cd client && yarn dev",
+      "server": "cd sage-api && yarn start"
     },
     "devDependencies": {
       "typescript": "^5.0.2"
